@@ -16,24 +16,24 @@ Before you submit the different parts of your lab, make sure that your project f
 - [X] Ensure the website loads when opening http://localhost:3000/
 
 Create an index.html file which contains:
-- [X] A title
-- [X] A main headline and two section headlines
-- [X] Semantic tags that correspond to the parts of your page
-- [X] A section to select burgers that contains at least three items. Each item has at least:
-	- [X] A name
-	- [X] An image
-	- [X] Information about allergies 
-- [X] A section to collect customer information:
-	- [X] First- and Last Name (in one field)
-	- [X] E-Mail Address
-	- [X] Street
-	- [X] House Number (only allowing numbers in this field)
-	- [X] Gender (male, female, do not wish to provide as radio buttons)
-- [X] A button to place the order
+- [] A title
+- [] A main headline and two section headlines
+- [] Semantic tags that correspond to the parts of your page
+- [] A section to select burgers that contains at least three items. Each item has at least:
+	- [] A name
+	- [] An image
+	- [] Information about allergies 
+- [] A section to collect customer information:
+	- [] First- and Last Name (in one field)
+	- [] E-Mail Address
+	- [] Street
+	- [] House Number (only allowing numbers in this field)
+	- [] Gender (male, female, do not wish to provide as radio buttons)
+- [] A button to place the order
 
 ## 03 CSS
 
-- [X] Create style.css and link to it from index.html
+- [] Create style.css and link to it from index.html
 
 Add the following style/behaviour to your website (mostly in style.css but also requiring changes in index.html):
 - [ ] Define a base line font for your site by putting the style rule on "body"
