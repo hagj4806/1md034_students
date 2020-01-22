@@ -13,12 +13,21 @@
             margin: 0 auto;
            
         }
+      
 
         h1 {
             color: navy;
             margin-left: 20px;
-            
+            margin:0 auto;
+           
         }
+
+        #header {
+            margin: 10px 10px;
+            opacity: 0.7;
+        }
+
+       
         .classname {
             color: #f8f8ff;
         }
@@ -26,11 +35,12 @@
         #idname {
             font-weight: bold;
         }
+           
 
 
          #Order {
              
-             margin: 80px 1px;
+             margin: 10px 10px;
              border: 4px dashed black;
              padding-left: 2%;
              
@@ -38,7 +48,7 @@
 
          #Burger {
              background-color: black;
-             margin: 80px 1px;
+             margin: 1px 10px;
              border: 4px dashed white;
              
             
@@ -47,24 +57,31 @@
          button:hover {
              background-color: #ffc0cb;
              cursor: pointer;
+             
          }
          table.center {
              margin-left: auto;
              margin-right:auto;
              
-             
          }
 
-       
-        
+         #Button {
+             padding-left: 2%;
+         }
+         
        
          
        </style>
     </head>
     <body>
       <main>
-        <h1>Welcome to BurgerOnline</h1>
 
+        
+        <section id ="Header">
+          <h1>Welcome to BurgerOnline</h1>
+         <img src = "https://www.metro.ca/userfiles/image/recettes-occasions/special-features/picnic-bbq/festiveburger-header.jpg" alt= "Spa" title = "Header" width = 98% height = 50% > 
+        </section>
+        
         <section id = "Burger">
           <h2><section class="classname">Select your burger</section></h2>
           <p><section class="classname">This is where you execute burger selection</section></p>
@@ -167,12 +184,16 @@
             <input type="radio" name="gender" value="Undisclosed"> Undisclosed
           </p>
 
-          <p>
-            <button type="submit"><img src="https://previews.123rf.com/images/canbedone/canbedone1703/canbedone170300003/73111691-happy-cartoon-hamburger-character-isolated-on-white.jpg" width = "20" /> Place my order!</button>
-          </p>
          
 
-        </section>
+      </section>
+      <section id = "Button">
+      
+             <button type="submit"><img src="https://previews.123rf.com/images/canbedone/canbedone1703/canbedone170300003/73111691-happy-cartoon-hamburger-character-isolated-on-white.jpg" width = "20" /> Place my order!</button>
+          
+         </section>
+
+      
       </main>
           
       <footer>
