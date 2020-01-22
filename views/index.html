@@ -1,10 +1,120 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC>
 <html lang="en">
-    <head>
-        <title>DELI-VERY</title>
+    
+  <head>
+   
+        <title>Hannas Burgers</title>
+        <meta charset="utf-8"/>
+       <style type="text/css">
+        body {
+            background-color: lightblue;
+        }
+
+        h1 {
+            color: navy;
+            margin-left: 20px;
+        }
+       </style>
     </head>
     <body>
-        <h1>Hello World!!!</h1>
-        <a href="/map" target="_blank">Open map in new window</a>.
+      <main>
+        <h1>Welcome to BurgerOnline</h1>
+
+        <section>
+          <h2>Select your burger</h2>
+          <p>This is where you execute burger selection</p>
+
+
+          <table>
+            <thead>
+              <tr>
+                <th>The vegan burger</th>
+                <th>The vegetarian burger</th>
+                <th>The meat burger</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td> <img src = "https://www.wearesovegan.com/wp-content/uploads/2019/07/veganburger-h1-1170x1645.jpg" alt= "Span" title = "PictureOne" width="250"> </td>
+                <td> <img src = "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2018/07/best-black-bean-burgers-2.jpg" alt= "Spann" title = "PictureTwo" width = "240"> </td>
+                <td> <img src = "https://www.santamariaworld.com/optimized/recipe-large/globalassets/_recipes/bbq/kentucky_burger.jpg?id=2357" alt = "Spannn" title = "PictureThree" width = "270"> </td>
+              </tr>
+              <tr>
+                
+                <td> <ul> <li>750 kCal</li> </ul> </td>
+                <td> <ul> <li>800 kCal</li> </ul> </td>
+                <td> <ul> <li>1300 kCal</li> </ul> </td>
+              </tr>
+              <tr>
+                 <td> <ul> <li>May contain traces of nuts</li> </ul> </td>
+                 <td> <ul> <li>Contains gluten</li> </ul> </td>
+                 <td> <ul> <li>Contains gluten</li> </ul> </td>
+              </tr>
+
+              <tr>
+                <td></td>
+                <td></td>
+                <td> <ul> <li>Contains lactose</li> </ul> </td>
+                    
+
+          </table>
+          
+           
+        </section>
+        
+        <section>
+          <h2>Customer Information</h2>
+          <p>This is where you provide necessary information</p>
+          <h3>Delivery information:</h3>
+          <p>
+            <label for="First- and Last name">Full name</label><br>
+            <input type="text" id="First- and Last name" name="fn" required="required" placeholder="First- and Last Name" />
+          </p>
+
+          <p>
+           <label for="E-mail address">E-mail address</label><br>
+           <input type="email" id="email" name="em" required="required" placeholder="E-mail address" />
+          </p>
+
+          <p>
+            <label for="Street">Street</label><br>
+            <input type="text" id="Street" name="st" required="required" placeholder="Street name" />
+          </p>
+
+          <p>
+            <label for="House">House</label><br>
+            <input type="number" id="House" name="hou" required="required" placeholder="House number" />
+          </p>
+
+          <p>
+            <label for="payment">Payment options</label><br />
+            <select id = "payment" name="pay">
+              <option selected>Credit card </option>
+              <option>Invoice</option>
+              <option>Direct payment</option>
+              <option>Klarna</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="Gender"> Gender options</label><br />
+            <input type="radio" name="gender" value="Male"> Male<br>
+            <input type="radio" name="gender" value="Female"> Female<br>
+            <input type="radio" name="gender" value="None-binary" checked> None-binary<br>
+            <input type="radio" name="gender" value="Undisclosed"> Undisclosed
+          </p>
+
+          <p>
+            <button type="submit"><img src="https://previews.123rf.com/images/canbedone/canbedone1703/canbedone170300003/73111691-happy-cartoon-hamburger-character-isolated-on-white.jpg" width = "20" /> Place my order!</button>
+          </p>
+
+        </section>
+      </main>
+          
+      <footer>
+        <hr>
+         &copy; 2020 Hypothetical Burgers Inc. 
+        </hr>
+      </footer>
     </body>
 </html>
