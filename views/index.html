@@ -7,30 +7,50 @@
         <meta charset="utf-8"/>
        <style type="text/css">
         body {
-            background-color: lightblue;
+            
+            font-family: arial;
+            font-size: 20px;
         }
 
         h1 {
             color: navy;
             margin-left: 20px;
+            
         }
+        .classname {
+            color: #f8f8ff;
+        }
+
+        #idname {
+            font-weight: bold;
+        }
+
+
+         #Order {
+             background-color: darkgrey;
+             
+         }
+
+         #Burger {
+             background-color: black;
+         }
        </style>
     </head>
     <body>
       <main>
         <h1>Welcome to BurgerOnline</h1>
 
-        <section>
-          <h2>Select your burger</h2>
-          <p>This is where you execute burger selection</p>
+        <section id = "Burger">
+          <h2><section class="classname">Select your burger</section></h2>
+          <p><section class="classname">This is where you execute burger selection</section></p>
 
 
           <table>
             <thead>
               <tr>
-                <th>The vegan burger</th>
-                <th>The vegetarian burger</th>
-                <th>The meat burger</th>
+                <th><section class="classname">The Vegan burger</section></th>
+                <th><section class="classname">The Vegetarian Burger</section></th>
+                <th><section class="classname">The Meat Burger</section></th>
               </tr>
             </thead>
             <tbody>
@@ -41,20 +61,33 @@
               </tr>
               <tr>
                 
-                <td> <ul> <li>750 kCal</li> </ul> </td>
-                <td> <ul> <li>800 kCal</li> </ul> </td>
-                <td> <ul> <li>1300 kCal</li> </ul> </td>
+                <td> <ul> <li><section class="classname">750 kCal</section></li> </ul> </td>
+                <td> <ul> <li><section class="classname">800 kCal</section></li> </ul> </td>
+                <td> <ul> <li><section class="classname">1300 kCal</section></li> </ul> </td>
               </tr>
               <tr>
-                 <td> <ul> <li>May contain traces of nuts</li> </ul> </td>
-                 <td> <ul> <li>Contains gluten</li> </ul> </td>
-                 <td> <ul> <li>Contains gluten</li> </ul> </td>
+                
+                <td> <ul> <li><section class="classname">
+                    <p>May contain traces of <span id="idname">nuts </span></p>
+                </section></td></li> </ul> </td>
+               
+               <td> <ul> <li> <section class="classname">
+                    <p>Contains <span id="idname">gluten </span></p>
+                </section></td></li> </ul> </td>
+
+
+                  <td> <ul> <li> <section class="classname">
+                    <p>Contains <span id="idname">gluten </span></p>
+                </section></td></li> </ul> </td>
+                 
               </tr>
 
               <tr>
                 <td></td>
                 <td></td>
-                <td> <ul> <li>Contains lactose</li> </ul> </td>
+                 <td> <ul> <li> <section class="classname">
+                    <p>Contains <span id="idname1">lactose </span></p>
+                </section></td></li> </ul> </td>
                     
 
           </table>
@@ -62,7 +95,7 @@
            
         </section>
         
-        <section>
+        <section id = "Order">
           <h2>Customer Information</h2>
           <p>This is where you provide necessary information</p>
           <h3>Delivery information:</h3>
