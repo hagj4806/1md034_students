@@ -1,0 +1,85 @@
+
+
+
+ body {
+     color: black;
+            font-family: arial;
+            font-size: 30px;
+            margin: 0 auto;
+        }
+
+
+        h1 {
+            color: black;
+            margin-left: 20px;
+            margin:0 auto;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow:hidden;
+
+        }
+
+        #header {
+            margin: 10px 10px;
+            opacity: 0.5;
+        }
+
+        .classname {
+            color: #f8f8ff;
+            padding-left: 2%;
+        }
+
+        #idname {
+            font-weight: bold;
+        }
+
+
+
+         #Order {
+
+             margin: 10px 10px;
+             border: 4px dashed black;
+             padding-left: 2%;
+             font-size: 20px;
+
+         }
+
+         #Burger {
+             background-color: black;
+             margin: 1px 10px;
+             border: 4px dashed white;
+
+
+         }
+
+         button:hover {
+             background-color: #ffc0cb;
+             cursor: pointer;
+
+         }
+         .center {
+             margin-left: auto;
+             margin-right:auto;
+             width: 100%;
+             align: center;
+             valign: center;
+             background-color: red;
+
+         }
+
+         .burger1{
+             background-color: blue;
+             width: 33%;
+         }
+
+         #Button {
+             padding-left: 2%;
+
+         }
+
+
+         footer {
+             font-size: 12px;
+         }
