@@ -1,0 +1,11 @@
+@import url("reset.css");
+@import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
