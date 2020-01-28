@@ -1,4 +1,8 @@
-
+@media screen and (max-width: 800px) {
+    h1 {
+        font-size: 6vw;
+    }
+}
 
 
  body {
@@ -43,6 +47,7 @@
              border: 4px dashed black;
              padding-left: 2%;
              font-size: 20px;
+
 
          }
 
@@ -92,6 +97,10 @@
              grid-row-start: 1;
              grid-row-end: 3;
          }
+
+        .center li {
+            color: white;
+        }
 
          #Button {
              padding-left: 2%;
