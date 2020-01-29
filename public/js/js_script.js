@@ -1,14 +1,6 @@
-function Employee(fn, ln, branch, pos) {
-    this.firstName = fn; // The this keyword refers to the object itself
-    this.lastName = ln;
-    this.branch = branch;
-    this.position = pos;
-    this.name = function() {
-        return this.firstName + ' ' + this.lastName;
-    };
+function menuItem(name, kCal, containing) {
+  this.name = name
+  this.kCal = kCal
+  this.name= containing
+  var prop = $('<img class="prop" src="/Images/prop.ico" />').attr('id', i);
 }
-
-// Objects are then instantiated using the new keyword
-let emp = new Employee('Maike', 'Paetzel', 'Uppsala', 'PhD Student');
-
-console.log( emp.name() ); // Output: Maike Paetzel
