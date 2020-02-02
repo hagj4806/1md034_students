@@ -1,8 +1,16 @@
   <!DOCTYPE html>
   <html lang="en">
     <head>
-          <link rel="stylesheet" type="text/css" href="public/css/style.css">
+          <link rel="stylesheet" type="text/css" href="css/style.css">
           <link rel="stylesheet" href="css/deli-very.css">
+          <script type="text/javascript" src="js/menu.js"></script>
+
+          <script src="/socket.io/socket.io.js" defer></script>
+
+          <script src="js/vue_script.js" defer></script>
+
+          <script src="js/js_script.js" defer></script>
+
           <title>Hannas Burgers</title>
           <meta charset="utf-8"/>
 
@@ -12,80 +20,43 @@
 
           <h1 class ="Welcome"> Welcome to BurgerOnline</h1>
           <section id ="Header">
-
             <img src = "https://www.metro.ca/userfiles/image/recettes-occasions/special-features/picnic-bbq/festiveburger-header.jpg" alt= "Spa" title = "Header" width = 100%  >
-
           </section>
 
-          <section v-bind: title = "selBurger" id = "Burger">
-            <h2><section class="classname">Select your burger</section></h2>
-            <p><section class="classname">This is where you execute burger selection</section></p>
-
+          <section v-bind:title = "selBurger" id = "Burger">
+            <h2>{{selBurg}}</h2>
+            <p>{{burgtext}}</p>
 
             <div class="center">
+                <div class="burgerBox" v-for="burger in menuArray">
+                <div class="burgerText" > {{burger.name}}</div>
+                <div class="burgerPic"><img v-bind:src="burger.img" alt="Hamburgare" title="Hamburger" ></div>
+                <div class="burgerInfo">
 
-              <div class = "burger1">
-                <div class="classname">The Vegan Burger</div>
-
-                  <div class = "BurgerPic"> <img src = "https://www.wearesovegan.com/wp-content/uploads/2019/07/veganburger-h1-1170x1645.jpg" alt= "Span" title = "PictureOne" width="250"> </div>
-                  <ul>
-                    <li><section class="classname">750 kCal</section></li>
-                   <li><section class="classname">
-                      <p>Traces of <span id="idname">nuts </span></p>
-                    </section></li>
-                  </ul>
-
-                  </div>
-
-                  <div class = "burger2">
-                    <div class="classname">The Veg Burger</div>
-                    <div class "BurgerPic"> <img src = "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2018/07/best-black-bean-burgers-2.jpg" alt= "Spann" title = "PictureTwo" width = "235"> </div>
-                      <ul>
-                        <li><section class="classname">800 kCal</section></li>
-                        <li> <section class="classname">
-                          <p>Contains <span id="idname">gluten </span></p>
-                      </section></li>
-                     </ul>
-
-                 </div>
-
-                  <div class = "burger3">
-                    <div class="classname">The Meat Burger</div>
-                    <div class = "BurgerPic"> <img src = "https://www.santamariaworld.com/optimized/recipe-large/globalassets/_recipes/bbq/kentucky_burger.jpg?id=2357" alt = "Spannn" title = "PictureThree" width = "260" height = "350"> </div>
-                    <ul>
-                      <li><section class="classname">1300 kCal</section></li>
-                      <li> <section class="classname">
-                      <p>Contains <span id="idname">gluten </span></p>
-                    </section></li>
-                    <li> <section class="classname">
-                      <p>Contains <span id="idname">lactose </span></p>
-                    </section></li>
-                  </ul>
-                  </div>
-
-
-             </div>
-
-
+              <ul>
+                <li> {{burger.kcal}} kCal </li>
+                <li v-if="burger.containsLactos"> Contains <span id="allergy">Lactos</span> </li>
+                <li v-if="burger.containsGluten"> Contains <span id="allergy">Gluten </span></li>
+            </ul>
             </div>
+              <input type="checkbox" name="selBurger" :value="burger.name"> Select <br>
+                </div>
+            </section>
 
-
-          </section>
 
         <section id = "Order">
 
-
-            <td align=center valign =center>
             <h2>Customer Information</h2>
             <p>This is where you provide necessary information</p>
             <h3>Delivery information:</h3>
+            
             <p>
               <label for="First- and Last name">Full name</label><br>
               <input type="text" id="First- and Last name" name="fn" required="required" placeholder="First- and Last Name" />
             </p>
 
             <p>
-             <label for="E-mail address">E-mail address</label><br>
+             <label for="email">email</label><br>
              <input type="email" id="email" name="em" required="required" placeholder="E-mail address" />
             </p>
 
@@ -100,7 +71,7 @@
             </p>
 
             <p>
-              <label for="payment">Payment options</label><br />
+              <label for="payment">Payment</label><br />
               <select id = "payment" name="pay">
                 <option selected>Credit card </option>
                 <option>Invoice</option>
@@ -109,24 +80,42 @@
               </select>
             </p>
 
+
+            <a> Please indicate point of delivery on the map: </a>
+              <div class="view-box">
+                <div id="dots" v-on:click="displayOrder">
+                  <div
+                    v-for="order in orders"
+                    v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+
+                  </div>
+                </div>
+              </div>
+               <a href="/dispatcher" target="_blank" style="font-size:70%; font-style:italic">Open dispatcher in new window</a
+
             <p>
-              <label for="Gender"> Gender options</label><br />
+              <label for="Gender" id="Gender"> Gender options</label><br />
               <input type="radio" name="gender" value="Male"> Male<br>
               <input type="radio" name="gender" value="Female"> Female<br>
-              <input type="radio" name="gender" value="None-binary" checked> None-binary<br>
-              <input type="radio" name="gender" value="Undisclosed"> Undisclosed
+              <input type="radio" name="gender" value="None-binary" checked="checked"> None-binary<br>
+              <input type="radio" name="gender" value="Undisclosed"> Undisclosed<br>
             </p>
-
-
-
         </section>
-        <section id = "Button">
-
-               <button type="submit"><img src="https://previews.123rf.com/images/canbedone/canbedone1703/canbedone170300003/73111691-happy-cartoon-hamburger-character-isolated-on-white.jpg" width = "20" /> Place my order!</button>
-
-           </section>
-
-
+        <div id = "Button">
+               <button type="submit" id = "button" v-on:click="addOrder"><img src="https://previews.123rf.com/images/canbedone/canbedone1703/canbedone170300003/73111691-happy-cartoon-hamburger-character-isolated-on-white.jpg" width = "20" /> Place my order!</button>
+               <div id="answers">
+                        <h3>
+                          Customer details
+                        </h3>
+                        {{output}}
+                        <h3>
+                          Burgers selected
+                         </h3>
+                        {{burgers}}
+                      </div>
+        </div>
+       </section>
+      </section>
         </main>
 
         <footer>
