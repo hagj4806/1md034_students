@@ -1,4 +1,4 @@
-var food = [
+let food = [
     {
         "name": "The Vegan Burger",
         "kCal": 750,
