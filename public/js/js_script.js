@@ -37,3 +37,36 @@ var burgerFive = document.createElement("p");
 burgerFive.innerHTML = burger5.getName();
 document.getElementById("myID").appendChild(burgerFive);
 
+var menu = [burger1, burger2, burger3, burger4, burger5]
+var myElement = document.getElementById("myID");
+for (var burgers of menu)
+{
+
+if(burgers.containsLactose == 'true' && burgers.containsGluten == 'true'){
+        let listItem = document.createElement("li");
+        listItem.innerHTML = burgers.getName() + ' ' + "contains lactose and gluten"
+        myElement.appendChild(listItem);
+        }
+
+        else if(burgers.containsGluten == 'true') {
+        let listItem = document.createElement("li");
+        listItem.innerHTML = burgers.getName() + ' ' + "contains gluten"
+        myElement.appendChild(listItem);
+
+      }
+
+        else if(burgers.containsLactose == 'true') {
+        let listItem = document.createElement("li");
+        listItem.innerHTML = burgers.getName() + ' ' + "contains lactose"
+        myElement.appendChild(listItem);
+        }
+
+
+        else {
+        let listItem = document.createElement("li");
+        listItem.innerHTML = burgers.getName();
+        myElement.appendChild(listItem);
+        }       
+}
+
+
