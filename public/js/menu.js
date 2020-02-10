@@ -35,7 +35,7 @@ let food = [
         "lactose": true,
         "gluten": false,
         "img": "https://bigseventravel.com/wp-content/uploads/2019/03/Screenshot-2019-03-21-at-15.12.44.png"
-    }
+    } 
 
 
 
