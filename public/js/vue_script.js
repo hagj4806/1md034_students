@@ -1,113 +1,111 @@
-function menuItem(name, kcal, containsGluten, containsLactos, img) {
-    this.name= name;
-    this.kcal=kcal;
-    this.containsGluten = containsGluten;
-    this.containsLactos= containsLactos;
-    this.img = img;
-    this.getName = function () {
-        return "Name: " + this.name + ", kCal:  " + this.kcal;
-    }
-}
-var menu = [];
-for (i = 0; i < food.length; i++) {
-    menu[i] = new menuItem(food[i].name, food[i].kCal, food[i].lactose, food[i].gluten, food[i].img);
-}
+<!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <link rel="stylesheet" type="text/css" href="css/style.css">
+     <link rel="stylesheet" href="css/deli-very.css">
+     <script type="text/javascript" src="js/menu.js"></script>
 
-var vm = new Vue({
-    el:'#menu',
-    data: {
-        selectBurg: "Select Burger " + Date(),
-        selBurg: "Select Burger",
-        burgtext: "This is where you execute burger selection",
-        menu: menu
+     <script src="/socket.io/socket.io.js" defer></script>
+     <script src="https://vuejs.org/js/vue.js"></script>
+     <script src="js/vue_script.js" defer></script>
 
-    }
-});
+     <script src="js/js_script.js" defer></script>
 
-let food = [
-    {
-        "name": "The Vegan Burger",
-        "kCal": 750,
-        "lactose": false,
-        "gluten": false,
-        "img": "https://www.wearesovegan.com/wp-content/uploads/2019/07/veganburger-h1-1170x1645.jpg"
-    },
-    {
-        "name": "The Veg Burger",
-        "kCal": 800,
-        "lactose": false,
-        "gluten": true,
-        "img": "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2018/07/best-black-bean-burgers-2.jpg"
-    },
-    {
-        "name": "The Meat Burger",
-        "kCal": 1300,
-        "lactose": true,
-        "gluten": true,
-        "img": "https://www.santamariaworld.com/optimized/recipe-large/globalassets/_recipes/bbq/kentucky_burger.jpg?id=2357"
-    },
+           <body>
+             <main>
 
-    {
-        "name": "Umami Burger",
-        "kCal": 900,
-        "lactose": true,
-        "gluten": true,
-        "img": "https://www.fsrmagazine.com/sites/default/files/styles/story_image_720x430/public/2019-11/SBE.jpg?itok=QyswJQdq"
-    },
+               <h1 class ="Welcome"> Welcome to BurgerOnline</h1>
+               <section id ="Header">
 
-    {
-        "name": "Stockholm Burger",
-        "kCal": 120000,
-        "lactose": true,
-        "gluten": false,
-        "img": "https://bigseventravel.com/wp-content/uploads/2019/03/Screenshot-2019-03-21-at-15.12.44.png"
-    }
+                 <img src = "https://www.metro.ca/userfiles/image/recettes-occasions/special-features/picnic-bbq/festiveburger-header.jpg" alt= "Spa" title = "Header" width = 100%  >
+
+               </section>
+
+               <section id = "Burger">
+                 <h2>Select your burger</h2>
+                 <p>This is where you execute burger selection</p>
+
+
+                 <div id = "burger" class="center">
+                   <div v-for = "burger in menu">
+                     <h3>{{burger.name}}</h3>
+                      <img v-bind:src="burger.img" :height = "350"><br>
+                      <ul>
+                        <li>{{burger.kcal}} </li>
+                        <span v-if ="burger.containsGluten">
+                        <li><b>Contains gluten</b></li>
+                      </span>
+                      <span v-if = "burger.containsLactose">
+                        <li><b>Contains lactose</b></li>
+                      </span>
+                    </ul>
+                  </div>
 
 
 
-]
+               </section>
+
+             <section id = "Order">
 
 
-/*const vm = new Vue ({
-el: '#myID',
-data: {
-	burger1: burger1,
-  burger2: burger2,
+                 <td align=center valign =center>
+                 <h2>Customer Information</h2>
+                 <p>This is where you provide necessary information</p>
+                 <h3>Delivery information:</h3>
+                 <p>
+                   <label for="First- and Last name">Full name</label><br>
+                   <input type="text" id="First- and Last name" name="fn" required="required" placeholder="First- and Last Name" />
+                 </p>
 
-},
-})
-*/
-/*
+                 <p>
+                  <label for="E-mail address">E-mail address</label><br>
+                  <input type="email" id="email" name="em" required="required" placeholder="E-mail address" />
+                 </p>
 
-let burger1 = new menuItem('Vegan', '500', true, true);
-let burger2 = new menuItem('Veg', '600', true, false);
-let burger3 = new menuItem('Meat', '400', false, false);
-let burger4 = new menuItem('Umami', '800', true, true);
-let burger5 = new menuItem('Halloumi', '100', true, false);
+                 <p>
+                   <label for="Street">Street</label><br>
+                   <input type="text" id="Street" name="st" required="required" placeholder="Street name" />
+                 </p>
+
+                 <p>
+                   <label for="House">House</label><br>
+                   <input type="number" id="House" name="hou" required="required" placeholder="House number" />
+                 </p>
+
+                 <p>
+                   <label for="payment">Payment options</label><br />
+                   <select id = "payment" name="pay">
+                     <option selected>Credit card </option>
+                     <option>Invoice</option>
+                     <option>Direct payment</option>
+                     <option>Klarna</option>
+                   </select>
+                 </p>
+
+                 <p>
+                   <label for="Gender"> Gender options</label><br />
+                   <input type="radio" name="gender" value="Male"> Male<br>
+                   <input type="radio" name="gender" value="Female"> Female<br>
+                   <input type="radio" name="gender" value="None-binary" checked> None-binary<br>
+                   <input type="radio" name="gender" value="Undisclosed"> Undisclosed
+                 </p>
 
 
-var menu = [burger1, burger2, burger3, burger4, burger5]
 
-const vm = new Vue ({
-	el: '#burger',
-  data: {
-  	menu: menu
-  },
+             </section>
+             <section id = "Button">
+
+                    <button type="submit"><img src="https://previews.123rf.com/images/canbedone/canbedone1703/canbedone170300003/73111691-happy-cartoon-hamburger-character-isolated-on-white.jpg" width = "20" /> Place my order!</button>
+
+                </section>
 
 
-})
+             </main>
 
-  in html
-<script src="https://vuejs.org/js/vue.js"></script>
-<div id="burger">
-    <h1>Välj en burgare</h1>
-    <div v-for="burger in menu">
-   {{ burger.getName() }}
-    <span v-if="burger.containsGluten" >
-    contains gluten
-    </span>
-      <span v-if="burger.containsLactose" >
-    contains lactose
-    </span>
-   </div>
-*/
+             <footer>
+               <hr>
+                &copy; 2020 Hypothetical Burgers Inc.
+               </hr>
+             </footer>
+           </body>
+       </html>
