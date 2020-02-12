@@ -8,25 +8,40 @@
         return "Name: " + this.name + ", kCal:  " + this.kcal;
     }
 }
+*/
 /*
-
 var vm = new Vue({
     el:'#menu',
     data: {
-        selectBurg: "Select Burger " + Date(),
-        selBurg: "Select Burger",
-        burgtext: "This is where you execute burger selection",
-        menu: menu
+        menu: menu,
+        name: ,
+        email: ,
+        street: ,
+        house: ,
+        payment: ,
+        gender: ,
 
-    }
+      },
+      methods: {
+        markDone: function() {
+
+        }
+      }
 });
 */
-/*
+
 const button = new Vue({
     el: '#Button',
     methods: {
         markDone: function() {
-          console.log("BUTTON CLICKED")
+          console.log(document.querySelector("input[name=check]:checked"))
+          var ans = [];
+          var ch = document.getElementsByName("check");
+          for(i = 0; i < ch.length; i++)
+            if(ch[i].checked) {
+              ans[ans.length] = ch[i].value
+            }
+            document.getElementById("select").innerHTML = ans;
         }
     }
 });
@@ -47,11 +62,23 @@ const vm = new Vue ({
 	el: '#burger',
   data: {
   	menu: menu,
+    name: "",
+    email: "",
+    street: "",
+    house: "",
+    payment: "",
+    gender: "",
+
+  },
+  methods: {
+    markDone: function() {
+
+    }
+
   },
 
-
-
 })
+
 /*
   in html
 <script src="https://vuejs.org/js/vue.js"></script>
