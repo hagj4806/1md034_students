@@ -85,6 +85,18 @@
                      <option>Klarna</option>
                    </select>
                  </p>
+                   
+                  <a> Please indicate point of delivery on the map: </a>
+                 <div class="view-box">
+                   <div id="dots" v-on:click="addOrder">
+                     <div
+                     v-for="order in orders"
+                    v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+                    T
+                    </div>
+                  </div>
+                </div>
+                <a href="/dispatcher" target="_blank" style="font-size:70%; font-style:italic">Open dispatcher in new window</a>.<br>
 
                  <p>
                    <label for="Gender"> Gender options</label><br />
