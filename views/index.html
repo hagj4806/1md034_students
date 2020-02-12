@@ -4,12 +4,12 @@
      <link rel="stylesheet" type="text/css" href="css/style.css">
      <link rel="stylesheet" href="css/deli-very.css">
      <script type="text/javascript" src="js/menu.js"></script>
+     <script src="js/js_script.js" defer></script>
 
-     <script src="/socket.io/socket.io.js" defer></script>
      <script src="https://vuejs.org/js/vue.js"></script>
      <script src="js/vue_script.js" defer></script>
 
-     <script src="js/js_script.js" defer></script>
+
 
            <body>
              <main>
@@ -32,12 +32,16 @@
                       <img v-bind:src="burger.img" :height = "350"><br>
                       <ul>
                         <li>{{burger.kcal}} </li>
-                        <span v-if ="burger.containsGluten">
-                        <li><b>Contains gluten</b></li>
+                      <span v-if ="burger.containsGluten">
+                      <li><b>Contains gluten</b></li>
                       </span>
                       <span v-if = "burger.containsLactose">
-                        <li><b>Contains lactose</b></li>
+                      <li><b>Contains lactose</b></li>
                       </span>
+                      <input type = "checkbox" name= "check" :value = "burger.name">
+                      <label for = "check"> Check this if wanted</label>
+
+
                     </ul>
                   </div>
 
@@ -93,11 +97,21 @@
 
 
              </section>
-             <section id = "Button">
+             <div id = "Button">
 
-                    <button type="submit"><img src="https://previews.123rf.com/images/canbedone/canbedone1703/canbedone170300003/73111691-happy-cartoon-hamburger-character-isolated-on-white.jpg" width = "20" /> Place my order!</button>
+                    <button v-on:click="markDone(key)"><img src="https://previews.123rf.com/images/canbedone/canbedone1703/canbedone170300003/73111691-happy-cartoon-hamburger-character-isolated-on-white.jpg" width = "20" /> Place my order!</button>
 
-                </section>
+                </div>
+
+
+
+              </h3>
+            
+              <h3 id="select">
+
+              </h3>
+
+          </div>
 
 
              </main>
