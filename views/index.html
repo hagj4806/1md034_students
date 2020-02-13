@@ -1,79 +1,130 @@
-  /* jslint es6:true, indent: 2 */
-/* global Vue, io */
-/* exported vm */
-'use strict';
-const socket = io();
-
-/* eslint-disable-next-line no-unused-vars */
-const vm = new Vue ({
-	el: '#whole',
-  data: {
-  	menu: menu,
-    name: "",
-    email: "",
-    payment: "",
-    gender: "",
-    order: {details: {x: 0, y:0}},
-		details: {x: 0, y:0},
-		counter: 0,
-		check: [],
-
-  },
-
-  methods: {
-
-    markDone: function() {
-
-         console.log(this.check);
-
-        },
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <link rel="stylesheet" type="text/css" href="css/style.css">
+     <link rel="stylesheet" href="css/deli-very.css">
+     <script type="text/javascript" src="js/menu.js"></script>
+     <script src="js/js_script.js" defer></script>
+     <script src = "/socket.io/socket.io.js" defer></script>
+     <script src="https://vuejs.org/js/vue.js"></script>
+     <script src="js/vue_script.js" defer></script>
 
 
-    getNext: function() {
-      /* This function returns the next available key (order number) in
-       * the orders object, it works under the assumptions that all keys
-       * are integers. */
-      return ++this.counter;
-    },
-    addOrder: function() {
-      /* When you click in the map, a click event object is sent as parameter
-       * to the function designated in v-on:click (i.e. this one).
-       * The click event object contains among other things different
-       * coordinates that we need when calculating where in the map the click
-       * actually happened. */
-			 let offset = {
-				 x: event.currentTarget.getBoundingClientRect().left,
-				 y: event.currentTarget.getBoundingClientRect().top,
-			 };
 
-      socket.emit('addOrder', {
-        orderId: this.getNext(),
+           <body>
+             <main>
+               <section id = "whole">
 
-        details: {
-					x: this.details.x - 10,
-					y: this.details.y - 10,
-				},
+               <h1 class ="Welcome"> Welcome to BurgerOnline</h1>
+               <section id ="Header">
 
-        orderItems: this.check,
-      });
-    },
-    displayOrder: function(event){
+                 <img src = "https://www.metro.ca/userfiles/image/recettes-occasions/special-features/picnic-bbq/festiveburger-header.jpg" alt= "Spa" title = "Header" width = 100%  >
 
-      let offset = {
+               </section>
 
-        x: event.currentTarget.getBoundingClientRect().left,
-        y: event.currentTarget.getBoundingClientRect().top,
-      };
-			this.order = {
-				orderId: this.getNext(),
-				details: {
-					x: event.clientX - 10 - offset.x,
-					y: event.clientY - 10 - offset.y,
-				},
-				orderItems: [],
-				orderInfo: [],
+               <section id = "Burger">
+                 <h2>Select your burger</h2>
+                 <p>This is where you execute burger selection</p>
 
-			};
-		},
-	},
-});
+
+                 <div id = "burger" class="center">
+                   <div v-for = "burger in menu">
+                     <h3>{{burger.name}}</h3>
+                      <img v-bind:src="burger.img" :height = "350"><br>
+                      <ul>
+                        <li>{{burger.kcal}} </li>
+                      <span v-if ="burger.containsGluten">
+                      <li><b>Contains gluten</b></li>
+                      </span>
+                      <span v-if = "burger.containsLactose">
+                      <li><b>Contains lactose</b></li>
+                      </span>
+                      <input type = "checkbox" v-bind:id= "burger.name" v-bind:value = "burger.name" v-model ="check">
+                      <label for = "check"> Check this if wanted</label>
+
+
+                    </ul>
+                  </div>
+
+
+
+               </section>
+
+             <section id = "Order">
+
+
+                 <td align=center valign =center>
+                 <h2>Customer Information</h2>
+                 <p>This is where you provide necessary information</p>
+                 <h3>Delivery information:</h3>
+                 <p>
+                   <label for="First- and Last name">Full name</label><br>
+                   <input type="text" id="First- and Last name" name="fn" required="required" placeholder="First- and Last Name" />
+                 </p>
+
+                 <p>
+                  <label for="E-mail address">E-mail address</label><br>
+                  <input type="email" id="email" name="em" required="required" placeholder="E-mail address" />
+                 </p>
+
+                 <p>
+                   <label for="payment">Payment options</label><br />
+                   <select id = "payment" name="pay">
+                     <option selected>Credit card </option>
+                     <option>Invoice</option>
+                     <option>Direct payment</option>
+                     <option>Klarna</option>
+                   </select>
+                 </p>
+
+                 <a> Please indicate point of delivery on the map: </a>
+                 <div class="view-box">
+                   <div id="dots" v-on:click="displayOrder">
+                     <div
+
+                    v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+                    T
+                    </div>
+                  </div>
+                </div>
+                <a href="/dispatcher" target="_blank" style="font-size:70%; font-style:italic">Open dispatcher in new window</a>.<br>
+
+                 <p>
+                   <label for="Gender"> Gender options</label><br />
+                   <input type="radio" name="gender" value="Male"> Male<br>
+                   <input type="radio" name="gender" value="Female"> Female<br>
+                   <input type="radio" name="gender" value="None-binary" checked> None-binary<br>
+                   <input type="radio" name="gender" value="Undisclosed"> Undisclosed
+                 </p>
+
+                 <h2>Your selection</h2>
+                 <span>Name: {{ name }}</span><br>
+                 <span>E-mail: {{ email }}</span><br>
+                <span>Gender: {{ gender }}</span><br>
+                <span>Payment: {{ payment }}</span><br>
+                <span>Your order: {{ check }}</span><br>
+
+
+             </section>
+             <div id = "Button" v-on:click= "addOrder">
+
+                    <button v-on:click="markDone"><img src="https://previews.123rf.com/images/canbedone/canbedone1703/canbedone170300003/73111691-happy-cartoon-hamburger-character-isolated-on-white.jpg" width = "20" /> Place my order!</button>
+
+                </div>
+
+
+
+
+
+          </div>
+          </section>
+
+             </main>
+
+             <footer>
+               <hr>
+                &copy; 2020 Hypothetical Burgers Inc.
+               </hr>
+             </footer>
+           </body>
+       </html>
